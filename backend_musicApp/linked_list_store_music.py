@@ -35,12 +35,14 @@ class LinkedList:
             while temp.next is not None:
                 print("hello")
                 if temp.data == key:
-                    temp = temp.next
                     break
-        prev = temp
-        temp = temp.next
+                prev = temp
+                temp = temp.next
         if temp is None:
             return
+
+        prev.next = temp.next
+        temp = None
 
 
 if __name__ == "__main__":
@@ -62,4 +64,3 @@ if __name__ == "__main__":
             break
         else:
             print("invalid choice")
-        
