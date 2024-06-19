@@ -8,6 +8,7 @@ class LinkedList:
     def __init__(self):
         self.head = None
 
+# INSERTING
     def insert_list(self, data):
         new_node = Node(data)
         if self.head is None:
@@ -18,6 +19,7 @@ class LinkedList:
                 last = last.next
             last.next = new_node
 
+# DISPLAY
     def display_list(self):
         current = self.head
         while current is not None:
@@ -25,15 +27,17 @@ class LinkedList:
             current = current.next
         print("None")
 
+# DELETE
     def delete_list(self, key):
         temp = self.head
+        # assume the delete elament is the first element in the list
         if temp.data == key:
             self.head = temp.next
             temp = None
             return
+        # search the delete element for the list
         else:
             while temp.next is not None:
-                print("hello")
                 if temp.data == key:
                     break
                 prev = temp
@@ -44,11 +48,14 @@ class LinkedList:
         prev.next = temp.next
         temp = None
 
+# SEARCHING
     def searchlist(self,key):
         temp = self.head
+        # assume first element
         if temp.data == key:
             print(temp.data)
             return
+        # search for the key element 
         else:
             while temp.next is not None:
                 if temp.data == key:
