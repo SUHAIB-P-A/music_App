@@ -49,18 +49,20 @@ class LinkedList:
         temp = None
 
 # SEARCHING
-    def searchlist(self,key):
+    def searchlist(self, key):
+        counter = 1
         temp = self.head
         # assume first element
         if temp.data == key:
-            print(temp.data)
+            print("iteam ("+temp.data+") found, at the position "+str(counter))
             return
-        # search for the key element 
+        # search for the key element
         else:
             while temp.next is not None:
                 if temp.data == key:
-                    print(temp.data)
+                    print("iteam ("+temp.data+") found, at the position "+str(counter))
                     break
+                counter += 1
                 prev = temp
                 temp = temp.next
         if temp is None:
@@ -74,7 +76,7 @@ if __name__ == "__main__":
         print(" 1 Insert list")
         print(" 2 Display list")
         print(" 3 Delete list")
-        print(" 4 search")
+        print(" 4 Search")
         print(" 5 Exit")
         choice = int(input("Enter your choice : "))
         if choice == 1:
