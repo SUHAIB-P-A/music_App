@@ -1,7 +1,9 @@
 import pygame
 import time
+
+
 class Node:
-    def __init__(self, title,artist,file_path):
+    def __init__(self, title, artist, file_path):
         self.title = title
         self.artist = artist
         self.file_path = file_path
@@ -27,7 +29,8 @@ class LinkedList:
     def display_list(self):
         current = self.head
         while current is not None:
-            print(current.title,current.artist,current.file_path, end=" -> ")
+            print(
+                f"Title: {current.title}, Artist: {current.artist}, File Path: {current.file_path}")
             current = current.next
         print("None")
 
@@ -47,6 +50,7 @@ class LinkedList:
                 prev = temp
                 temp = temp.next
         if temp is None:
+            print("None")
             return
 # joining list
         prev.next = temp.next
@@ -56,22 +60,16 @@ class LinkedList:
     def searchlist(self, key):
         counter = 1
         temp = self.head
-        # assume first element
-        if temp.title == key:
-            print("iteam ("+temp.title+") found, at the position "+str(counter))
-            return
-        # search for the key element
-        else:
-            while temp.next is not None:
-                if temp.title == key:
-                    print("iteam ("+temp.title+") found, at the position "+str(counter))
-                    break
-                counter += 1
-                prev = temp
-                temp = temp.next
-        if temp is None:
-            return
-        
+        while temp is not None:
+            if temp.title == key:
+                print(f"Item ({temp.title}) found, at position {counter}")
+                print(
+                    f"Title: {temp.title}, Artist: {temp.artist}, File Path: {temp.file_path}")
+                return
+            temp = temp.next
+            counter += 1
+        print("Item not found")
+
     def playMusic():
         print("")
 
@@ -87,10 +85,10 @@ if __name__ == "__main__":
         print(" 5 Exit")
         choice = int(input("Enter your choice : "))
         if choice == 1:
-            title = input("Enter the song title")
-            artist = input("Enter the song artist name")
-            file_path = input("Add the song file")
-            list.insert_list(title,artist,file_path)
+            title = input("Enter the song title : ")
+            artist = input("Enter the song artist name : ")
+            file_path = input("Add the song file : ")
+            list.insert_list(title, artist, file_path)
         elif choice == 2:
             list.display_list()
         elif choice == 3:
