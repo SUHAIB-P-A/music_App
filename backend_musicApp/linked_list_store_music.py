@@ -83,19 +83,19 @@ if __name__ == "__main__":
         print(" 3 Delete list")
         print(" 4 Search")
         print(" 5 Exit")
-        choice = int(input("Enter your choice : "))
-        if choice == 1:
+        choice = input("Enter your choice : ")
+        if choice == "1":
             title = input("Enter the song title : ")
             artist = input("Enter the song artist name : ")
             file_path = input("Add the song file : ")
             list.insert_list(title, artist, file_path)
-        elif choice == 2:
+        elif choice == "2":
             list.display_list()
-        elif choice == 3:
+        elif choice == "3":
             list.delete_list(input("Enter the delete value : "))
-        elif choice == 4:
+        elif choice == "4":
             list.searchlist(input("Enter the search element : "))
-        elif choice == 5:
+        elif choice == "5":
             break
         else:
             print("invalid choice")
