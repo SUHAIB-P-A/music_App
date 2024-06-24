@@ -1,8 +1,10 @@
 import pygame
 import time
 class Node:
-    def __init__(self, data):
-        self.data = data
+    def __init__(self, title,artist,file_path):
+        self.title = title
+        self.artist = artist
+        self.file_path = file_path
         self.next = None
 
 
@@ -11,8 +13,8 @@ class LinkedList:
         self.head = None
 
 # INSERTING
-    def insert_list(self, data):
-        new_node = Node(data)
+    def insert_list(self, title, artist, file_path):
+        new_node = Node(title, artist, file_path)
         if self.head is None:
             self.head = new_node
         else:
@@ -25,7 +27,7 @@ class LinkedList:
     def display_list(self):
         current = self.head
         while current is not None:
-            print(current.data, end=" -> ")
+            print(current.title,current.artist,current.file_path, end=" -> ")
             current = current.next
         print("None")
 
@@ -33,14 +35,14 @@ class LinkedList:
     def delete_list(self, key):
         temp = self.head
         # assume the delete elament is the first element in the list
-        if temp.data == key:
+        if temp.title == key:
             self.head = temp.next
             temp = None
             return
         # search the delete element for the list
         else:
             while temp.next is not None:
-                if temp.data == key:
+                if temp.title == key:
                     break
                 prev = temp
                 temp = temp.next
@@ -55,20 +57,23 @@ class LinkedList:
         counter = 1
         temp = self.head
         # assume first element
-        if temp.data == key:
-            print("iteam ("+temp.data+") found, at the position "+str(counter))
+        if temp.title == key:
+            print("iteam ("+temp.title+") found, at the position "+str(counter))
             return
         # search for the key element
         else:
             while temp.next is not None:
-                if temp.data == key:
-                    print("iteam ("+temp.data+") found, at the position "+str(counter))
+                if temp.title == key:
+                    print("iteam ("+temp.title+") found, at the position "+str(counter))
                     break
                 counter += 1
                 prev = temp
                 temp = temp.next
         if temp is None:
             return
+        
+    def playMusic():
+        print("")
 
 
 if __name__ == "__main__":
@@ -82,7 +87,10 @@ if __name__ == "__main__":
         print(" 5 Exit")
         choice = int(input("Enter your choice : "))
         if choice == 1:
-            list.insert_list(input("Enter a value : "))
+            title = input("Enter the song title")
+            artist = input("Enter the song artist name")
+            file_path = input("Add the song file")
+            list.insert_list(title,artist,file_path)
         elif choice == 2:
             list.display_list()
         elif choice == 3:
