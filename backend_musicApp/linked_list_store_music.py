@@ -70,19 +70,34 @@ class LinkedList:
             counter += 1
         print("Item not found")
 
-    def playMusic():
-        print("")
-
+    def playMusic(self,title):
+        current = self.head
+        while current is not None:
+            if current.title == title:
+              print(
+                  f"Playing: {current.title} By {current.artist}")
+              pygame.mixer.init()
+              pygame.mixer.music.load(current.file_path)
+              pygame.mixer.music.play()
+              while pygame.mixer.music.get_busy():
+                  time.sleep(1)
+              pygame.mixer.music.stop()
+              return
+            current = current.next
+            print(
+                f"Title: {current.title}, Artist: {current.artist}, File Path: {current.file_path}")
+    
 
 if __name__ == "__main__":
     list = LinkedList()
-    choice = 0
+    choice = "0"
     while True:
         print(" 1 Insert list")
         print(" 2 Display list")
         print(" 3 Delete list")
         print(" 4 Search")
-        print(" 5 Exit")
+        print(" 5 Play Music")
+        print(" 6 Exit")
         choice = input("Enter your choice : ")
         if choice == "1":
             title = input("Enter the song title : ")
@@ -96,6 +111,8 @@ if __name__ == "__main__":
         elif choice == "4":
             list.searchlist(input("Enter the search element : "))
         elif choice == "5":
+            list.playMusic(input("Enter the song title : "))
+        elif choice == "6":
             break
         else:
             print("invalid choice")
